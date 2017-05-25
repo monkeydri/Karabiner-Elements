@@ -412,7 +412,11 @@ private:
 
   void caps_lock_state_changed_callback(bool caps_lock_state) {
     event_manipulator_.set_caps_lock_state(caps_lock_state);
-    update_caps_lock_led(caps_lock_state);
+    //update_caps_lock_led(caps_lock_state);
+    key_code caps_lock_code = key_code::caps_lock;
+    if (caps_lock_state) {
+      event_manipulator_.public_post_key(caps_lock_code, true, 0);
+    }
   }
 
   void update_caps_lock_led(bool caps_lock_state) {

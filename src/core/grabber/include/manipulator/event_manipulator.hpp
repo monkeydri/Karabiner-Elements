@@ -109,6 +109,11 @@ public:
     modifier_flag_manager_.manipulate(modifier_flag::caps_lock,
                                       state ? modifier_flag_manager::operation::lock : modifier_flag_manager::operation::unlock);
   }
+  
+  void public_post_key(key_code key_code, bool pressed, uint64_t timestamp) {
+    post_key(key_code, pressed, timestamp);
+  }
+
 
   void handle_keyboard_event(device_registry_entry_id device_registry_entry_id,
                              uint64_t timestamp,
